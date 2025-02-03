@@ -2,7 +2,7 @@
 
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 
-byte bow1[8] = {
+byte arrow1[8] = {
   B00000,
   B00000,
   B00000,
@@ -13,7 +13,7 @@ byte bow1[8] = {
   B00000
 };
 
-byte bow2[8] = {
+byte arrow2[8] = {
   B00000,
   B00000,
   B10000,
@@ -24,7 +24,7 @@ byte bow2[8] = {
   B00000
 };
 
-byte right[8] = {
+byte right_arrow[8] = {
   B00000,
   B00000,
   B01000,
@@ -35,7 +35,7 @@ byte right[8] = {
   B00000
 };
 
-byte left[8] = {
+byte left_arrow[8] = {
   B00000,
   B00000,
   B00010,
@@ -63,7 +63,6 @@ int okbutton = 8;
 int pot = A0;
 int buzzer = A1;
 int buttonstate = 0;
-int okbutstate = 0;
 int number = 0;
 int potval = 0;
 int realval = 0;
@@ -72,18 +71,18 @@ int leds[6] = {5,6,9,10,11};
 void setup() {
   lcd.init();
   lcd.backlight();
-  lcd.createChar(0, bow1);
-  lcd.createChar(1, bow2);
-  lcd.createChar(2, right);
-  lcd.createChar(3, left);
+  lcd.createChar(0, arrow1);
+  lcd.createChar(1, arrow2);
+  lcd.createChar(2, right_arrow);
+  lcd.createChar(3, left_arrow);
   lcd.createChar(4, node);
   // lcd.setCursor(3,1);
-  // lcd.setCursor(3,1);   // left bow
+  // lcd.setCursor(3,1);   // left arrow
   // lcd.setCursor(4,1);   // first number in column 4 & 5
-  // lcd.setCursor(6,1);   // right bow
-  // lcd.setCursor(9,1);   // left bow
+  // lcd.setCursor(6,1);   // right arrow
+  // lcd.setCursor(9,1);   // left arrow
   // lcd.setCursor(9,1);   // second number in column 10 & 11
-  // lcd.setCursor(12,1);  // right bow
+  // lcd.setCursor(12,1);  // right arrow
   for (int i=0; i<5; i++) {
     pinMode(leds[i], OUTPUT);
   }
@@ -156,20 +155,20 @@ void loop() {
     lcd.print("Your value is:");
     lcd.setCursor(8,1);
     lcd.print(number + realval);
-    int lamps[6];
+    int bright[6];
     int val = number + realval;
-    lamps[0] = val & 1;
-    lamps[1] = (val >> 1) & 1;
-    lamps[2] = (val >> 2) & 1;
-    lamps[3] = (val >> 3) & 1;
-    lamps[4] = (val >> 4) & 1;
-    // lamps[5] = (val >> 5) & 1;
-    // digitalWrite(leds[5], lamps[0]);
-    digitalWrite(leds[4], lamps[0]);
-    digitalWrite(leds[3], lamps[1]);
-    digitalWrite(leds[2], lamps[2]);
-    digitalWrite(leds[1], lamps[3]);
-    digitalWrite(leds[0], lamps[4]);
+    bright[0] = val & 1;
+    bright[1] = (val >> 1) & 1;
+    bright[2] = (val >> 2) & 1;
+    bright[3] = (val >> 3) & 1;
+    bright[4] = (val >> 4) & 1;
+    // bright[5] = (val >> 5) & 1;
+    // digitalWrite(leds[5], bright[0]);
+    digitalWrite(leds[4], bright[0]);
+    digitalWrite(leds[3], bright[1]);
+    digitalWrite(leds[2], bright[2]);
+    digitalWrite(leds[1], bright[3]);
+    digitalWrite(leds[0], bright[4]);
     delay(5000);
     lcd.clear();
   }
