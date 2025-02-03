@@ -106,7 +106,7 @@ void loop() {
   // }
 
   lcd.setCursor(0,0);
-  lcd.print("Enter 2 numbers:");
+  lcd.print("Adding 2 numbers");
   lcd.setCursor(3,1);
   lcd.write(byte(3)); //left arrow
   lcd.setCursor(6,1);
@@ -144,11 +144,6 @@ void loop() {
         lcd.setCursor(12+k, 0);
         lcd.print(" ");
       }
-      delay(100);
-      lcd.setCursor(i, 1);
-      lcd.print(" ");
-      lcd.setCursor(i+1, 1);
-      lcd.print(" ");
     }
     lcd.clear();
     lcd.setCursor(0,0);
