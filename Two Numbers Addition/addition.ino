@@ -1,40 +1,6 @@
 #include <LiquidCrystal_I2C.h>
-#include <math.h>
 
-LiquidCrystal_I2C lcd(0x27, 16, 2);  // Alamat I2C, kolom, baris
-
-/*
-alat yang dibutuhkan:
-- 3 button
-- 1 potantiometer
-- 6 leds
-- 9 resistors
-- 1 buzzer
-
-algo:
-- baris 1: tulisan "masukan angka"
-- permintaan masukan angka (ADC)
-- baris 2: karakter dan angka
-- tekan tombol pertanda sudah siap dan buzzer bunyi
-- baris 1: tulisan "on progress"
-- baris 1: 4 titik di 3 kolom terakhir dg gaya kedip berurutan
-- baris 2: animasi panah berjalan ke kanan
-- setelah 4 detik berganti format
-- baris 1: tulisan "your value is"
-- baris 2: hasil penjumlahan
-- led nyala sesuai dengan hasil penjumlahan
-*/
-
-byte bell[8] = {
-  B00000,
-  B00100,
-  B01110,
-  B01110,
-  B01110,
-  B11111,
-  B00100,
-  B00000
-};
+LiquidCrystal_I2C lcd(0x27, 16, 2);
 
 byte bow1[8] = {
   B00000,
